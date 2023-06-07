@@ -4,6 +4,7 @@ import com.routes.routesystem.model.Parada;
 import com.routes.routesystem.model.Rota;
 import com.routes.routesystem.service.RotaService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,10 @@ public class RotaController {
         this.rotaService = rotaService;
     }
 
+//    public RotaController(RotaService rotaService) {
+//        this.rotaService = rotaService;
+//    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Rota criarRota(@Valid @RequestBody Rota rota) {
@@ -31,7 +36,7 @@ public class RotaController {
     }
 
     @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.FOUND)
+    @ResponseStatus(HttpStatus.OK)
     public Rota obterRota(@PathVariable Long id) {
         return rotaService.findById(id);
     }

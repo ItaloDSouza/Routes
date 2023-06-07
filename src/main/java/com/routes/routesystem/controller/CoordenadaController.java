@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/coordenadas")
 public class CoordenadaController {
-    private final RotaService rotaService;
-
-    public CoordenadaController(RotaService rotaService) {
-        this.rotaService = rotaService;
-    }
-
-    @PostMapping
-    public void atualizarStatusParadas(@RequestBody Coordenada coordenada) {
-        rotaService.atualizarStatusParadas(coordenada);
-    }
+//    private final RotaService rotaService;
+//
+//    public CoordenadaController(RotaService rotaService) {
+//        this.rotaService = rotaService;
+//    }
+//
+//    @PostMapping
+//    public void atualizarStatusParadas(@RequestBody Coordenada coordenada) {
+//        rotaService.atualizarStatusParadas(coordenada);
+//    }
 }

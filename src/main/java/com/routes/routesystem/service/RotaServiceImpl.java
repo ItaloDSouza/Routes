@@ -7,13 +7,15 @@ import com.routes.routesystem.model.Parada;
 import com.routes.routesystem.model.Rota;
 import com.routes.routesystem.repository.RotaRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.ZoneId;
+import java.util.*;
 
+@Service
 public class RotaServiceImpl implements RotaService{
 
     RotaRepository rotaRepository;
@@ -96,7 +98,10 @@ public class RotaServiceImpl implements RotaService{
             Log log = new Log();
             log.setStatusRota(rota.getStatus().name());
             log.setId(rota.getId());
-            log.setDataEvento(LocalDateTime.from(rota.getData()));
+            LocalDate data = rota.getData();
+            Instant instant = data.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+            LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+            log.setDataEvento(localDateTime);
 
             rotaStatusPublisher.publishStatusUpdate(log);
 

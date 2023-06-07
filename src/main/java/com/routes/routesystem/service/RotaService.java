@@ -3,13 +3,13 @@ package com.routes.routesystem.service;
 import com.routes.routesystem.model.Coordenada;
 import com.routes.routesystem.model.Parada;
 import com.routes.routesystem.model.Rota;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
-@Service
 public interface RotaService {
     Rota findById(Long id);
     void delete(Long rotaId);

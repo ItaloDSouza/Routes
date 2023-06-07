@@ -23,7 +23,7 @@ public class Rota {
     @Column(name = "status")
     private StatusRota status;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "rota_id")
     private List<Parada> paradas;
 
